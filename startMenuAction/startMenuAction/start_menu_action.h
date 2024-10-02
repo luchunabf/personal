@@ -25,6 +25,10 @@ public:
 	static void openSpecificSettings(const wchar_t* uri); // 打开特定的设置页面
 	static void openPrintSettings(); // 打开打印机设置界面
 	static void openSoundSettings(); // 新添加的方法声明
+	static void openKeyboardSettings(); // 打开键盘设置界面
+	static void openMouseSettings(); // 打开鼠标设置界面
+	static void openNetWorkSettings(); // 打开网络设置界面
+
 };
 
 }

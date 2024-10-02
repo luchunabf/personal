@@ -76,10 +76,16 @@ void StartMenuAciton::StartMenuAction::restartAction()
 
 void StartMenuAciton::StartMenuAction::openDisplaySettings()
 {
-	// 使用 ShellExecute 函数打开显示设置界面
-	HINSTANCE result = ShellExecute(NULL, L"open", L"ms-settings:display", NULL, NULL, SW_SHOWNORMAL);
-	if ((int)result <= 32) {
-		std::cerr << "Failed to open display settings. Error code: " << (int)result << std::endl;
+	//// 使用 ShellExecute 函数打开显示设置界面
+	//HINSTANCE result = ShellExecute(NULL, L"open", L"ms-settings:display", NULL, NULL, SW_SHOWNORMAL);
+	//if ((int)result <= 32) {
+	//	std::cerr << "Failed to open display settings. Error code: " << (int)result << std::endl;
+	//}
+
+	// 使用 system 函数打开显示设置界面
+	int result = system("start ms-settings:display");
+	if (result != 0) {
+		std::cerr << "Failed to open display settings. Error code: " << result << std::endl;
 	}
 }
 
@@ -96,17 +102,55 @@ void StartMenuAciton::StartMenuAction::openSpecificSettings(const wchar_t* uri)
 
 void StartMenuAciton::StartMenuAction::openPrintSettings()
 {
-	HINSTANCE result = ShellExecute(NULL, L"open", L"rundll32.exe", L"shell32.dll,SHHelpShortcuts_RunDLL PrintersFolder", NULL, SW_SHOWNORMAL);
-	if ((int)result <= 32) {
-		std::cerr << "Failed to open print settings. Error code: " << (int)result << std::endl;
+	//HINSTANCE result = ShellExecute(NULL, L"open", L"rundll32.exe", L"shell32.dll,SHHelpShortcuts_RunDLL PrintersFolder", NULL, SW_SHOWNORMAL);
+	//if ((int)result <= 32) {
+	//	std::cerr << "Failed to open print settings. Error code: " << (int)result << std::endl;
+	//}
+
+	int result = system("start ms-settings:printers");
+	if (result != 0) {
+		std::cerr << "Failed to open print settings. Error code: " << result << std::endl;
 	}
 }
 
 
 void StartMenuAciton::StartMenuAction::openSoundSettings()
 {
-	HINSTANCE result = ShellExecute(NULL, L"open", L"ms-settings:sound", NULL, NULL, SW_SHOWNORMAL);
-	if ((int)result <= 32) {
-		std::cerr << "Failed to open sound settings. Error code: " << (int)result << std::endl;
+	//HINSTANCE result = ShellExecute(NULL, L"open", L"ms-settings:sound", NULL, NULL, SW_SHOWNORMAL);
+	//if ((int)result <= 32) {
+	//	std::cerr << "Failed to open sound settings. Error code: " << (int)result << std::endl;
+	//}
+
+	int result = system("start ms-settings:sound");
+	if (result != 0) {
+		std::cerr << "Failed to open sound settings. Error code: " << result << std::endl;
+	}
+}
+
+void StartMenuAciton::StartMenuAction::openKeyboardSettings()
+{
+	//int result = system("start ms-settings:keyboard");
+	int result = system("start ms-settings:typing");
+	if (result != 0) {
+		std::cerr << "Failed to open keyboard settings. Error code: " << result << std::endl;
+	}
+}
+
+
+
+void StartMenuAciton::StartMenuAction::openMouseSettings()
+{
+	int result = system("start ms-settings:mousetouchpad");
+	if (result != 0) {
+		std::cerr << "Failed to open mouse settings. Error code: " << result << std::endl;
+	}
+}
+
+
+void StartMenuAciton::StartMenuAction::openNetWorkSettings()
+{
+	int result = system("start ms-settings:network");
+	if (result != 0) {
+		std::cerr << "Failed to open network settings. Error code: " << result << std::endl;
 	}
 }
